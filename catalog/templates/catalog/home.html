@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Домашняя страница</title>
+    <link rel="stylesheet" href="/node_modules/uikit/dist/css/uikit.min.css" />
+    <script src="/node_modules/uikit/dist/js/uikit.min.js"></script>
+    <style>
+        .welcome-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            background-color: white; /* добавляем белый фон */
+        }
+        .welcome-block h1 {
+            font-weight: bold; /* делаем текст жирным */
+            font-size: 20px; /* увеличиваем размер шрифта */
+        }
+        }
+        .welcome-text {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .contacts-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 18px;
+            color: blue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-block">
+        <div class="welcome-text">Добро пожаловать на домашнюю страницу!</div>
+    </div>
+    <div class="contacts-link" onclick="window.location.href='contact.html'">Контакты</div>
+</body>
+</html>
