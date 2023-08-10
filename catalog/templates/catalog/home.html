@@ -2,22 +2,16 @@
 <html>
 <head>
     <title>Домашняя страница</title>
-    <link rel="stylesheet" href="/node_modules/uikit/dist/css/uikit.min.css" />
-    <script src="/node_modules/uikit/dist/js/uikit.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .welcome-block {
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             height: 100vh;
             padding: 20px;
-            background-color: white; /* добавляем белый фон */
-        }
-        .welcome-block h1 {
-            font-weight: bold; /* делаем текст жирным */
-            font-size: 20px; /* увеличиваем размер шрифта */
-        }
+            background-color: white;
         }
         .welcome-text {
             font-size: 20px;
@@ -31,11 +25,28 @@
             color: blue;
             cursor: pointer;
         }
+        .first-column {
+            background-color: gray;
+            padding-top: 20px;
+        }
+        .sky-text {
+            font-size: 24px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <div class="welcome-block">
-        <div class="welcome-text">Добро пожаловать на домашнюю страницу!</div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 first-column">
+                <div class="sky-text">Sky</div>
+            </div>
+            <div class="col-md-9">
+                <div class="welcome-block">
+                    <div class="welcome-text">Добро пожаловать на домашнюю страницу!</div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="contacts-link" onclick="window.location.href='contact.html'">Контакты</div>
 </body>
