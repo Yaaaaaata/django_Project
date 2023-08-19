@@ -1,110 +1,49 @@
-{% load static %}
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+{% extends 'catalog/base.html' %}
 
-    <title></title>
+{% block title %}
+{% endblock %}
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+{% block menu %}
+<button class="contacts-link" onclick="window.location.href='contact.html'">Контакты</button>
+{% endblock %}
 
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/album.css' %}" rel="stylesheet">
-</head>
-
-<body>
-
-<header>
-    <div class="collapse bg-dark" id="navbarHeader">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-md-7 py-4">
-                    <h4 class="text-white"></h4>
-                    <p class="text-muted"></p>
-                </div>
-                <div class="col-sm-4 offset-md-1 py-4">
-                    <button class="contacts-link" onclick="window.location.href='contact.html'">Контакты</button>
-                </div>
-            </div>
-        </div>
+{% block content %}
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Добро пожаловать на главную страницу</h1>
+        <p class="lead text-muted"></p>
+        <p>
+        </p>
     </div>
-    <div class="navbar navbar-dark bg-dark box-shadow">
-        <div class="container d-flex justify-content-between">
-            <a href="#" class="navbar-brand d-flex align-items-center">
-                <strong>Sky</strong>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
-                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </div>
-</header>
+</section>
 
-<main role="main">
+<div class="album py-5 bg-light">
+    <div class="container">
 
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">Добро пожаловать на главную страницу</h1>
-            <p class="lead text-muted"></p>
-            <p>
-            </p>
-        </div>
-    </section>
-
-    <div class="album py-5 bg-light">
-        <div class="container">
-
-            <div class="row">
-                {% for object in object_list %}
-                <div class="col-md-4">
-                    <div class="card mb-4 box-shadow">
-                        <div class="card-body">
-                            {% if object.image %}
-                            <img src="{{ object.image.url }}"/>
-                            {% endif %}
-                            <p class="card-text">
-                            <h2>{{ object.name }}</h2>
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button class="details-link"
-                                            onclick="window.location.href='/product/{{ object.id }}'">Подробнее
-                                    </button>
-                                </div>
-                                <small class="text-muted"></small>
+        <div class="row">
+            {% for object in object_list %}
+            <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-body">
+                        {% if object.image %}
+                        <img src="{{ object.image.url }}"/>
+                        {% endif %}
+                        <p class="card-text">
+                        <h2>{{ object.name }}</h2>
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button class="details-link"
+                                        onclick="window.location.href='/product/{{ object.id }}'">Подробнее
+                                </button>
                             </div>
+                            <small class="text-muted"></small>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
         </div>
     </div>
-
-</main>
-
-<footer class="text-muted">
-    <div class="container">
-        <p class="float-right">
-        </p>
-        <p></p>
-        <p></p>
-    </div>
-</footer>
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="{% static 'js/popper.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/holder.min.js' %}"></script>
-</body>
-</html>
+</div>
+{% endblock %}
