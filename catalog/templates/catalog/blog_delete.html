@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Удаление поста блога
+{% endblock %}
+
+{% block menu %}
+    <a href="{% url 'home' %}" class="text-white">Домашняя страница</a>
+    <a href="{% url 'contact' %}" class="text-white">Контакты</a>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Удаление поста блога</h1>
+        <p>Вы уверены, что хотите удалить эту запись в блоге?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Удалить</button>
+        </form>
+    </div>
+{% endblock %}

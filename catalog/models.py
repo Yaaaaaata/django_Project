@@ -42,3 +42,31 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
+
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=100, verbose_name='заголовок')
+    """title: CharField с максимальной длиной 100 символов, для хранения заголовка блоговой записи."""
+    slug = models.CharField(max_length=100, unique=True, verbose_name='slug')
+    """slug: CharField с максимальной длиной 100 символов, для хранения уникального идентификатора блоговой записи."""
+    content = models.TextField(verbose_name='содержимое')
+    """content: TextField для хранения содержимого блоговой записи."""
+    preview = models.ImageField(upload_to='blog/', verbose_name='превью')
+    """preview: ImageField для хранения изображения превью блоговой записи. 
+    Параметр upload_to указывает папку, в которую будут загружаться изображения."""
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
+    """created_at: DateTimeField с параметром auto_now_add=True, 
+    который будет автоматически устанавливать текущую дату и время при создании записи."""
+    is_published = models.BooleanField(default=False, verbose_name='признак публикации')
+    """is_published: BooleanField для хранения признака публикации блоговой записи. 
+    По умолчанию запись не публикуется."""
+    views_count = models.IntegerField(default=0, verbose_name='количество просмотров')
+    """views_count: IntegerField для хранения количества просмотров блоговой записи. 
+    По умолчанию количество просмотров равно 0."""
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Блоговая запись"
+        verbose_name_plural = "Блоговые записи"
