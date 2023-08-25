@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Создание поста блога
+{% endblock %}
+
+{% block menu %}
+    <a href="{% url 'home' %}" class="text-white">Домашняя страница</a>
+    <a href="{% url 'contact' %}" class="text-white">Контакты</a>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Создание поста блога</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Создать</button>
+        </form>
+    </div>
+{% endblock %}
