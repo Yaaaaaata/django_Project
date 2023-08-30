@@ -34,14 +34,14 @@ class ProductView(View):
     @staticmethod
     def get(request, product_id):
         product_info = ProductView.get_product_info(product_id)
-        return render(request, 'product.html', {'product_info': product_info})
+        return render(request, 'catalog/product.html', {'product_info': product_info})
 
 
 class BlogPostCreateView(View):
     @staticmethod
     def get(request):
         form = BlogPostForm()
-        return render(request, 'blog_post_create.html', {'form': form})
+        return render(request, 'catalog/blog_post_create.html', {'form': form})
 
     @staticmethod
     def post(request):
@@ -51,7 +51,7 @@ class BlogPostCreateView(View):
             blog_post.slug = slugify(blog_post.title)  # формируем slug name из заголовка
             blog_post.save()
             return redirect('blog_detail', pk=blog_post.pk)
-        return render(request, 'blog_post_create.html', {'form': form})
+        return render(request, 'catalog/blog_post_create.html', {'form': form})
 
 
 class BlogPostDetailView(View):
@@ -60,7 +60,7 @@ class BlogPostDetailView(View):
         blog_post = get_object_or_404(BlogPost, pk=pk)
         blog_post.views += 1  # увеличиваем счетчик просмотров на 1
         blog_post.save()  # сохраняем изменения
-        return render(request, 'blog_post_detail.html', {'blog_post': blog_post})
+        return render(request, 'catalog/blog_post_detail.html', {'blog_post': blog_post})
 
 
 class BlogPostUpdateView(View):
@@ -68,7 +68,7 @@ class BlogPostUpdateView(View):
     def get(request, pk):
         blog_post = get_object_or_404(BlogPost, pk=pk)
         form = BlogPostForm(instance=blog_post)
-        return render(request, 'blog_post_update.html', {'form': form})
+        return render(request, 'catalog/blog_post_update.html', {'form': form})
 
     @staticmethod
     def post(request, pk):
@@ -77,14 +77,14 @@ class BlogPostUpdateView(View):
         if form.is_valid():
             form.save()
             return redirect('blog_detail', pk=pk)
-        return render(request, 'blog_post_update.html', {'form': form})
+        return render(request, 'catalog/blog_post_update.html', {'form': form})
 
 
 class BlogPostDeleteView(View):
     @staticmethod
     def get(request, pk):
         blog_post = get_object_or_404(BlogPost, pk=pk)
-        return render(request, 'blog_post_delete.html', {'blog_post': blog_post})
+        return render(request, 'catalog/blog_post_delete.html', {'blog_post': blog_post})
 
     @staticmethod
     def post(pk):
