@@ -57,11 +57,11 @@ class BlogPost(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
     """created_at: DateTimeField с параметром auto_now_add=True, 
     который будет автоматически устанавливать текущую дату и время при создании записи."""
-    is_published = models.BooleanField(default=False, verbose_name='признак публикации')
-    """is_published: BooleanField для хранения признака публикации блоговой записи. 
+    published = models.BooleanField(default=False, verbose_name='признак публикации')
+    """published: BooleanField для хранения признака публикации блоговой записи. 
     По умолчанию запись не публикуется."""
-    views_count = models.IntegerField(default=0, verbose_name='количество просмотров')
-    """views_count: IntegerField для хранения количества просмотров блоговой записи. 
+    views = models.IntegerField(default=0, verbose_name='количество просмотров')
+    """views: IntegerField для хранения количества просмотров блоговой записи. 
     По умолчанию количество просмотров равно 0."""
 
     def __str__(self):
