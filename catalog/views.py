@@ -60,6 +60,9 @@ class BlogPostDetailView(DetailView):
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
 
+    def get_queryset(self):
+        return super().get_queryset().filter(published=True)
+
 
 class BlogPostUpdateView(UpdateView):
     model = BlogPost
@@ -80,4 +83,4 @@ class BlogPostDeleteView(DeleteView):
     context_object_name = 'blog_post'
 
     def get_success_url(self):
-        return reverse('blog_list')
+        return reverse('home')
