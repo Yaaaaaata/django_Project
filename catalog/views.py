@@ -90,4 +90,4 @@ class BlogListView(ListView):
     model = BlogPost
     template_name = 'blog.html'
     context_object_name = 'blog_posts'
-    
+
