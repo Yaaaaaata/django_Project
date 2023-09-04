@@ -83,4 +83,11 @@ class BlogPostDeleteView(DeleteView):
     context_object_name = 'blog_post'
 
     def get_success_url(self):
-        return reverse('home')
+        return reverse('blog_list')
+
+
+class BlogListView(ListView):
+    model = BlogPost
+    template_name = 'blog.html'
+    context_object_name = 'blog_posts'
+
