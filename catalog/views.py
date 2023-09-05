@@ -49,16 +49,11 @@ class BlogPostDetailView(DetailView):
     template_name = 'catalog/blog_post_detail.html'
     context_object_name = 'blog_post'
 
-    def __init__(self, **kwargs):
-        super().__init__(kwargs)
-        self.object = None
-
-    def get(self, request, *args, **kwargs):
-        self.object = self.get_object()
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset=queryset)
         self.object.views += 1
         self.object.save()
-        context = self.get_context_data(object=self.object)
-        return self.render_to_response(context)
+        return self.object
 
     def get_queryset(self):
         return super().get_queryset().filter(published=True)
@@ -91,3 +86,5 @@ class BlogListView(ListView):
     template_name = 'blog.html'
     context_object_name = 'blog_posts'
 
+    def get_queryset(self):
+        return super().get_queryset().filter(published=True)
