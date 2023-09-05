@@ -88,3 +88,4 @@ class BlogListView(ListView):
 
     def get_queryset(self):
         return super().get_queryset().filter(published=True)
+
