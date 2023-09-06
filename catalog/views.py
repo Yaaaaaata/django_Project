@@ -55,9 +55,6 @@ class BlogPostDetailView(DetailView):
         self.object.save()
         return self.object
 
-    def get_queryset(self):
-        return super().get_queryset().filter(published=True)
-
 
 class BlogPostUpdateView(UpdateView):
     model = BlogPost
@@ -83,9 +80,8 @@ class BlogPostDeleteView(DeleteView):
 
 class BlogListView(ListView):
     model = BlogPost
-    template_name = 'blog.html'
+    template_name = 'catalog/blog.html'
     context_object_name = 'blog_posts'
 
     def get_queryset(self):
         return super().get_queryset().filter(published=True)
-
