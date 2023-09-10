@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Информация о версии продукта</h1>
+    <p>Продукт: {{ version.product }}</p>
+    <p>Номер версии: {{ version.version_number }}</p>
+    <p>Название версии: {{ version.version_name }}</p>
+    <p>Текущая версия: {% if version.is_current %}Да{% else %}Нет{% endif %}</p>
+
+{% endblock %}
