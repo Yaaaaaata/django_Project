@@ -5,7 +5,7 @@ from django.utils.text import slugify
 
 from catalog.models import Product
 from .models import BlogPost
-from .forms import BlogPostForm
+from .forms import BlogPostForm, ProductForm, Version
 
 
 class HomeView(ListView):
@@ -30,6 +30,40 @@ class ProductView(DetailView):
     model = Product
     template_name = 'catalog/product.html'
     context_object_name = 'product_info'
+
+
+class ProductCreateView(CreateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'catalog/product_create.html'
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('product_detail', kwargs={'pk': self.object.pk})
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'catalog/product_update.html'
+    context_object_name = 'product'
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('product_detail', kwargs={'pk': self.object.pk})
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'catalog/product_delete.html'
+    context_object_name = 'product'
+
+    def get_success_url(self):
+        return reverse('product_list')
 
 
 class BlogPostCreateView(CreateView):
@@ -85,3 +119,9 @@ class BlogListView(ListView):
 
     def get_queryset(self):
         return super().get_queryset().filter(published=True)
+
+
+class ProductVersionDetailView(DetailView):
+    model = Version
+    template_name = 'versies.html'
+    context_object_name = 'version'

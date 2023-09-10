@@ -20,7 +20,12 @@
 
 <div class="album py-5 bg-light">
     <div class="container">
-
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <button class="btn btn-success"
+                        onclick="window.location.href='/product/create/'">Создать продукт</button>
+            </div>
+        </div>
         <div class="row">
             {% for object in object_list %}
             <div class="col-md-4">
@@ -31,12 +36,18 @@
                         {% endif %}
                         <p class="card-text">
                         <h2>{{ object.name }}</h2>
+                        {% if object.active_version %}
+                        <p>Активная версия: {{ object.active_version.version_number }}</p>
+                        {% endif %}
                         </p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <button class="details-link"
-                                        onclick="window.location.href='/product/{{ object.id }}'">Подробнее
-                                </button>
+                                        onclick="window.location.href='/product/{{ object.id }}'">Подробнее</button>
+                                <button class="btn btn-primary"
+                                        onclick="window.location.href='/product/{{ object.id }}/update/'">Редактировать</button>
+                                <button class="btn btn-danger"
+                                        onclick="window.location.href='/product/{{ object.id }}/delete/'">Удалить</button>
                             </div>
                             <small class="text-muted"></small>
                         </div>
